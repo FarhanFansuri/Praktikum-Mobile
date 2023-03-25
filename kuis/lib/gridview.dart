@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:kuis/pokemon_data.dart';
 
+import 'detail.dart';
+
 class Gridview extends StatefulWidget {
   const Gridview({super.key});
 
@@ -24,9 +26,13 @@ class _GridviewState extends State<Gridview> {
           child: SingleChildScrollView(
               child: Wrap(
             children: [
-              for (var item in listPokemon)
+              for (var i = 0; i < listPokemon.length; i++)
                 GestureDetector(
-                  onTap: () => {Navigator.pushNamed(context, '/')},
+                  onTap: () => {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            Detail(listPokemon: listPokemon[i])))
+                  },
                   child: Card(
                       child: SizedBox(
                           width: 100,
@@ -37,9 +43,9 @@ class _GridviewState extends State<Gridview> {
                               Image(
                                 height: 50.0,
                                 width: 50.0,
-                                image: NetworkImage(item.image),
+                                image: NetworkImage(listPokemon[i].image),
                               ),
-                              Text(item.name),
+                              Text(listPokemon[i].name),
                             ],
                           )))),
                 ),

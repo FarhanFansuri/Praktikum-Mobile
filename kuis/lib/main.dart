@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'gridview.dart';
 
 void main() {
-  runApp(MaterialApp(
-    routes: {},
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: Gridview(),
   ));
 }
